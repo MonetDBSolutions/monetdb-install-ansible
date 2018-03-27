@@ -1,0 +1,39 @@
+---
+
+- name: install meta rpm
+  when: ansible_os_family == 'RedHat'
+  become: yes
+  package:
+    name: "{{ monetdb_meta_rpm_for[ansible_distribution] }}"
+    state: present
+
+- name: install Apt key
+  when: ansible_os_family == 'Debian'
+  become: yes
+  apt_key:
+    id: 0583366F
+    url: https://www.monetdb.org/downloads/MonetDB-GPG-KEY
+
+- name: install Apt sources list
+  when: ansible_os_family == 'Debian'
+  become: yes
+  template:
+    src: monetdb.list.in
+    dest: /etc/apt/sources.list.d/monetdb.list
+
+- name: install packages
+  become: yes
+  vars:
+    # this doesn't work yet
+    version_prefix: "{% if monetdb_version is defined %}_{{ monetdb_version }}{% endif %}"
+  package:
+    name: "{{item}}{{version_prefix}}"
+    state: present
+  with_items: "{{monetdb_packages_for[ansible_os_family]}}"
+
+- name: Add user to group monetdb
+  become: yes
+  user:
+    name: "{{ ansible_user_id }}"
+    append: yes
+    groups: monetdb

@@ -1,0 +1,30 @@
+---
+
+build_dependencies_for:
+  Debian:
+  - build-essential
+  - rsync
+  - mercurial
+  - gettext
+  - libreadline-dev
+  - libxml2-dev
+  - openssl
+  - libssl-dev
+  - libtool
+  - m4
+  - automake
+  - pkg-config
+  - bison
+  - libatomic-ops-dev
+  - libpcre3-dev
+  RedHat:
+  - mercurial
+  - rsync
+  - libtool
+  - gettext-devel
+  - libxml2-devel
+  - libatomic_ops-devel
+  - bison
+  - openssl-devel
+  - readline-devel
+  - automake

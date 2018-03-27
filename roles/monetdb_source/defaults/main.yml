@@ -1,0 +1,12 @@
+# Set to false if you don't have root rights.
+# In that case you have to install the build dependencies manually.
+can_sudo: yes
+
+# Mercurial repository to fetch the MonetDB source from
+hg_repo: https://dev.monetdb.org/hg/MonetDB
+
+monetdb_src: "{{monetdb_prefix}}/src"
+build_dir: "{{monetdb_prefix}}/build"
+monetdb_configure_flags: --enable-optimize --disable-debug --disable-assert --disable-developer
+# --disable-pyintegration --disable-py3integration
+

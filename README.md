@@ -47,3 +47,9 @@ will be performed with `hg clone` and the `monetdb_release` and
 
 `can_sudo`. If set to false no attempt will be made to install dependencies
 such as bison, gettext and openssl.
+
+`force_build`.  If set, MonetDB is (re)compiled and (re)installed even if
+it already seems to exist.
+
+`monetdb_configure_flags`.  Flags to pass to `configure`.  Defaults to
+`--enable-optimize --disable-debug --disable-assert --disable-developer`.

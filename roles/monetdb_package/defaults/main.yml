@@ -1,6 +1,0 @@
-# Set to false if you don't have root rights.
-# Sudo is used to install the MonetDB binary packages,
-# and for installing build dependencies when building from
-# source.
-can_sudo: yes
-

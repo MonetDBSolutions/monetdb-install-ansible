@@ -23,13 +23,9 @@
 
 - name: install packages
   become: yes
-  vars:
-    # this doesn't work yet
-    version_prefix: "{% if monetdb_version is defined %}_{{ monetdb_version }}{% endif %}"
   package:
-    name: "{{item}}{{version_prefix}}"
+    name: "{{monetdb_packages_for[ansible_os_family]}}"
     state: present
-  with_items: "{{monetdb_packages_for[ansible_os_family]}}"
 
 - name: Add user to group monetdb
   become: yes

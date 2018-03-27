@@ -1,0 +1,46 @@
+---
+
+- name: install build dependencies
+  when: can_sudo
+  become: yes
+  package:
+    name: "{{build_dependencies_for[ansible_os_family]}}"
+    state: present
+
+- name: fetch source from Mercurial repo
+  when: hg_revision is defined
+  hg:
+    dest: "{{ monetdb_src }}"
+    repo: "{{ hg_repo }}"
+    revision: "{{ hg_revision }}"
+    update: yes
+    force: yes
+    purge: yes
+  register: hg_update_result
+
+- name: check for existing installation
+  stat:
+    path: "{{ monetdb_prefix }}/bin/mserver5"
+  register: mserver5_present
+
+- name: clean build directory
+  when: (force_build is defined and force_build) or not mserver5_present.stat.exists
+  file:
+    path: "{{ build_dir }}"
+    state: absent
+
+- name: create build directory
+  when: (force_build is defined and force_build) or not mserver5_present.stat.exists
+  file:
+    path: "{{ build_dir }}"
+    state: directory
+
+- name: create build script
+  template:
+    src: build.sh.j2
+    dest: "{{ build_dir }}/build.sh"
+    mode: a+x
+
+- name: run build script
+  when: (force_build is defined and force_build) or not mserver5_present.stat.exists
+  command: "{{ build_dir }}/build.sh"

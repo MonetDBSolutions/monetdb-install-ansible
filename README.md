@@ -25,13 +25,16 @@ manager.
 Settings
 --------
 
-`monetdb_release`. Release name such as 'Jul2017-SP4'.
-
-`monetdb_version`. Version number such as 11.27.13. Can sometimes be derived
-from `{{monetdb_release}}`.
-
 `monetdb_prefix`. MonetDB's `bin`, `lib`, etc. directories will be created
 under this directory when installing from source.
+
+`monetdb_release`. Release name such as 'Jul2017-SP4'.
+
+`monetdb_version`. Version number such as 11.27.13.
+
+`monetdb_source_url`. Location where the source code
+can be retrieved.  Constructed out of `monetdb_release` and `monetdb_version` though the
+latter can often be omitted due to a [table](./roles/monetdb_source/vars/main.yml) in role `monetdb_source`.  Can also be a file on the remote host.
 
 `monetdb_src`. Where to put the MonetDB source code when installing from
 source. Defaults to `{{monetdb_prefix}}/src`.

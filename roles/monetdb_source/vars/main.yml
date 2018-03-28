@@ -28,3 +28,10 @@ build_dependencies_for:
   - openssl-devel
   - readline-devel
   - automake
+
+monetdb_version_for_release:
+  Jul2017: 11.27.1
+  Jul2017-SP1: 11.27.5
+  Jul2017-SP2: 11.27.9
+  Jul2017-SP3: 11.27.11
+  Jul2017-SP4: 11.27.13

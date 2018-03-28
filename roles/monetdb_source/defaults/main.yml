@@ -4,7 +4,7 @@ can_sudo: yes
 
 # Location of the MonetDB sources
 monetdb_mirror: https://www.monetdb.org/downloads/sources/
-monetdb_source_url: "{{ monetdb_mirror }}/{{ monetdb_release }}/MonetDB-{{ monetdb_version }}.tar.xz"
+monetdb_source_url: "{{ monetdb_mirror }}/{{ monetdb_release }}/MonetDB-{% if monetdb_version is defined %}{{ monetdb_version }}{% else %}{{ monetdb_version_for_release[monetdb_release] }}{% endif %}.tar.xz"
 
 # Mercurial repository to fetch the MonetDB source from
 hg_repo: https://dev.monetdb.org/hg/MonetDB

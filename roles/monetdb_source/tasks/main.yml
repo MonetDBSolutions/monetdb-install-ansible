@@ -58,3 +58,8 @@
 - name: run build script
   when: (force_build is defined and force_build) or not mserver5_present.stat.exists
   command: "{{ build_dir }}/build.sh"
+
+- name: create env script
+  template:
+    src: env.j2
+    dest: "{{ monetdb_prefix}}/env"

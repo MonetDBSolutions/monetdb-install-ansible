@@ -7,7 +7,21 @@
     name: "{{build_dependencies_for[ansible_os_family]}}"
     state: present
 
-- name: fetch source from Mercurial repo
+- name: create source directory
+  file:
+    path: "{{ monetdb_src }}"
+    state: directory
+
+- name: download source
+  when: hg_revision is not defined
+  unarchive:
+    dest: "{{ monetdb_src }}"
+    remote_src: yes
+    src: "{{ monetdb_source_url }}"
+    extra_opts: ['--strip-components', '1']
+    validate_certs: no  # due to slight misconfiguration
+
+- name: fetch source from Mercurial repo instead
   when: hg_revision is defined
   hg:
     dest: "{{ monetdb_src }}"

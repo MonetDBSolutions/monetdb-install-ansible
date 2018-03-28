@@ -2,6 +2,10 @@
 # In that case you have to install the build dependencies manually.
 can_sudo: yes
 
+# Location of the MonetDB sources
+monetdb_mirror: https://www.monetdb.org/downloads/sources/
+monetdb_source_url: "{{ monetdb_mirror }}/{{ monetdb_release }}/MonetDB-{{ monetdb_version }}.tar.xz"
+
 # Mercurial repository to fetch the MonetDB source from
 hg_repo: https://dev.monetdb.org/hg/MonetDB
 

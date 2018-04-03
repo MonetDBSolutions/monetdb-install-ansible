@@ -46,7 +46,7 @@ source. Defaults to `{{monetdb_prefix}}/src`.
 will be performed with `hg clone` and the `monetdb_release` and
 `monetdb_version` settings will be ignored.
 
-`dbfarm dir`.  If set, a dbfarm will be created and started in this location.
+`monetdb_farm_dir`.  If set, a dbfarm will be created and started in this location.
 
 `can_sudo`. If set to false no attempt will be made to install dependencies
 such as bison, gettext and openssl.

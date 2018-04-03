@@ -1,0 +1,2 @@
+monetdb_bin_dir: "{% if monetdb_prefix is defined %}{{ monetdb_prefix }}/bin/{% endif %}"
+

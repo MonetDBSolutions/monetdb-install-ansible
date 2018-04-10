@@ -28,6 +28,9 @@ build_dependencies_for:
   - openssl-devel
   - readline-devel
   - automake
+  Gentoo:
+  - mercurial
+  - dev-libs/libatomic_ops
 
 monetdb_version_for_release:
   Jul2017: 11.27.1

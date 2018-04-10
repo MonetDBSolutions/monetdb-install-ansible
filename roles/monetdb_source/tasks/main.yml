@@ -1,5 +1,10 @@
 ---
 
+- name: work around a problem with Gentoo
+  when: ansible_os_family == 'Gentoo' and can_sudo
+  become: yes
+  command: emerge app-portage/gentoolkit
+
 - name: install build dependencies
   when: can_sudo
   become: yes

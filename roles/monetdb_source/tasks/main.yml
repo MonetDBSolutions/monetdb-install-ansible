@@ -18,6 +18,8 @@
     state: directory
 
 - name: download source
+  tags:
+  - download
   when: hg_revision is not defined
   unarchive:
     dest: "{{ monetdb_src }}"

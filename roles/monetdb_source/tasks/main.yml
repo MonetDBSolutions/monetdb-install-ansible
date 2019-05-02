@@ -43,6 +43,7 @@
 - name: check for existing installation
   stat:
     path: "{{ monetdb_prefix }}/bin/mserver5"
+    get_checksum: no
   register: mserver5_present
 
 - name: clean build directory

@@ -18,6 +18,8 @@ build_dependencies_for:
   - libatomic-ops-dev
   - libpcre3-dev
   - libbz2-dev
+  - liblzma-dev
+  #- liblz4-dev
   RedHat:
   - mercurial
   - rsync

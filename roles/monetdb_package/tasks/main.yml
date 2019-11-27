@@ -21,6 +21,12 @@
     src: monetdb.list.in
     dest: /etc/apt/sources.list.d/monetdb.list
 
+- name: refresh Apt sources
+  when: ansible_os_family == 'Debian'
+  become: yes
+  apt:
+    update_cache: true
+
 - name: install packages
   become: yes
   package:

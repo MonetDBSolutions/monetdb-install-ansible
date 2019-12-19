@@ -1,0 +1,21 @@
+---
+# - include_role:
+#     name: "./../../monetdb_farm"
+
+- name: Upload VOC data
+  copy:
+    src: .monetdb
+    dest: "{{ home_dir }}"
+
+- name: Unpack VOC data
+  unarchive:
+    src: voc.tar.gz
+    dest: "{{ home_dir }}"
+
+- name: Create VOC database
+  shell: "monetdb create -p monetdb voc"
+
+- name: Load VOC data
+  shell: "mclient -d voc {{ home_dir }}voc_dump.sql"
+
+# - name:

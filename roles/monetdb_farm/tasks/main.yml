@@ -16,10 +16,10 @@
   failed_when: not (monetdb_status.rc == 0 or 'stderr' in monetdb_status)
   changed_when: False
 
-- name: Set listenaddr to 0.0.0.0
-  when: not "0.0.0.0" in farm_listenaddr.get('stdout', '')
-  command: "{{ monetdb_bin_dir }}monetdbd set listenaddr=0.0.0.0 {{ monetdb_farm_dir }}"
-  failed_when: not (monetdb_status.rc == 0 or 'stderr' in monetdb_status)
+# - name: Set listenaddr to 0.0.0.0
+#   when: not "0.0.0.0" in farm_listenaddr.get('stdout', '')
+#   command: "{{ monetdb_bin_dir }}monetdbd set listenaddr=0.0.0.0 {{ monetdb_farm_dir }}"
+#   failed_when: not (monetdb_status.rc == 0 or 'stderr' in monetdb_status)
 
 - name: Start db farm
   when: monetdb_status.rc != 0

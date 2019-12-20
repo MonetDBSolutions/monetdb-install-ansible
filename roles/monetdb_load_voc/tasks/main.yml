@@ -5,17 +5,17 @@
 - name: Upload VOC data
   copy:
     src: .monetdb
-    dest: "{{ home_dir }}"
+    dest: "{{ monetdb_work_dir }}"
 
 - name: Unpack VOC data
   unarchive:
     src: voc.tar.gz
-    dest: "{{ home_dir }}"
+    dest: "{{ monetdb_work_dir }}"
 
 - name: Create VOC database
   shell: "monetdb create -p monetdb voc"
 
 - name: Load VOC data
-  shell: "mclient -d voc {{ home_dir }}voc_dump.sql"
+  shell: "mclient -d voc {{ monetdb_work_dir }}/voc_dump.sql"
 
 # - name:

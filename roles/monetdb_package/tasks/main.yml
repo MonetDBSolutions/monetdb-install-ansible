@@ -18,7 +18,7 @@
   when: ansible_os_family == 'Debian'
   become: yes
   template:
-    src: "{{ monetdb_apt_sources_list }}"
+    src: "{{ monetdb_apt_sources_list[is_rc] }}"
     dest: /etc/apt/sources.list.d/monetdb.list
 
 - name: refresh Apt sources
@@ -27,11 +27,30 @@
   apt:
     update_cache: true
 
+# The following task is going to be used to install on Debian based machines
+# always and on Red Hat hosts if we are not installing the Release candidate
 - name: install packages
+  when: is_rc == "not_rc" or ansible_os_family == 'Debian'
   become: yes
   package:
     name: "{{monetdb_packages_for[ansible_os_family]}}"
-    state: present
+    state: latest
+
+- name: install yum RC packages
+  when: is_rc == "rc" and ansible_pkg_mgr == "yum"
+  become: yes
+  yum:
+    name: "{{monetdb_packages_for[ansible_os_family]}}"
+    state: latest
+    enablerepo: "monetdb-testing"
+
+- name: install dnf RC packages
+  when: is_rc == "rc" and ansible_pkg_mgr == "dnf"
+  become: yes
+  yum:
+    name: "{{monetdb_packages_for[ansible_os_family]}}"
+    state: latest
+    enablerepo: "monetdb-testing"
 
 - name: Add user to group monetdb
   become: yes

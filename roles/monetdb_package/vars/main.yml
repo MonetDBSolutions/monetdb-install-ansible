@@ -12,4 +12,5 @@ monetdb_meta_rpm_for:
   Red Hat Enterprise Linux: https://dev.monetdb.org/downloads/epel/MonetDB-release-epel.noarch.rpm
 
 monetdb_apt_sources_list:
-  monetdb.list.in
+  rc: monetdb_testing.list.in
+  not_rc: monetdb.list.in

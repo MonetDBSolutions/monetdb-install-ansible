@@ -18,7 +18,7 @@
   when: ansible_os_family == 'Debian'
   become: yes
   template:
-    src: monetdb.list.in
+    src: "{{ monetdb_apt_sources_list }}"
     dest: /etc/apt/sources.list.d/monetdb.list
 
 - name: refresh Apt sources

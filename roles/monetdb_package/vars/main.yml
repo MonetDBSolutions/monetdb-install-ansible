@@ -5,8 +5,11 @@ monetdb_packages_for:
   RedHat:
   - MonetDB-SQL-server5
   - MonetDB-client
+
 monetdb_meta_rpm_for:
   Fedora: https://dev.monetdb.org/downloads/Fedora/MonetDB-release.noarch.rpm
   CentOS: https://dev.monetdb.org/downloads/epel/MonetDB-release-epel.noarch.rpm
   Red Hat Enterprise Linux: https://dev.monetdb.org/downloads/epel/MonetDB-release-epel.noarch.rpm
 
+monetdb_apt_sources_list:
+  monetdb.list.in

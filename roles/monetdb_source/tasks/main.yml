@@ -9,8 +9,14 @@
   when: can_sudo
   become: yes
   package:
-    name: "{{build_dependencies_for[ansible_os_family]}}"
+    #name: "{{build_dependencies_for[ansible_os_family]}}"
+    name: "{{build_dependencies_for[ansible_distribution]}}"
     state: present
+
+- name: create python alternatives link (on Redhat8 and CentOS)
+  when: (ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'CentOS') and can_sudo 
+  become: yes
+  command: alternatives --set python /usr/bin/python3
 
 - name: create source directory
   file:

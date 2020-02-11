@@ -1,0 +1,3 @@
+# Set to false if you don't have root rights.
+# In that case you have to install the build dependencies manually.
+can_sudo: yes

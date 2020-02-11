@@ -1,0 +1,19 @@
+---
+
+- name: work around a problem with Gentoo
+  when: ansible_os_family == 'Gentoo' and can_sudo
+  become: yes
+  command: emerge app-portage/gentoolkit
+
+- name: install build dependencies
+  when: can_sudo
+  become: yes
+  package:
+    #name: "{{build_dependencies_for[ansible_os_family]}}"
+    name: "{{build_dependencies_for[ansible_distribution]}}"
+    state: present
+
+- name: create python alternatives link (on Redhat8 and CentOS)
+  when: (ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'CentOS') and can_sudo 
+  become: yes
+  command: alternatives --set python /usr/bin/python3

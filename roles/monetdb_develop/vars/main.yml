@@ -3,6 +3,7 @@
 build_dependencies_for:
   Debian:
   - cmake
+  - clang
   - build-essential
   - rsync
   - mercurial
@@ -24,8 +25,6 @@ build_dependencies_for:
   - libcurl4-gnutls-dev
   - libgeos-dev
   - libblas-dev
-  - python-dev
-  - python-numpy
   - r-base 
   - unixodbc-dev
   - uuid-dev
@@ -37,6 +36,7 @@ build_dependencies_for:
   - python3-numpy
   Ubuntu:
   - cmake
+  - clang
   - build-essential
   - rsync
   - mercurial
@@ -58,8 +58,6 @@ build_dependencies_for:
   - libcurl4-gnutls-dev
   - libgeos-dev
   - libblas-dev
-  - python-dev
-  - python-numpy
   - r-base 
   - unixodbc-dev
   - uuid-dev
@@ -73,6 +71,7 @@ build_dependencies_for:
 
   CentOS:
   - cmake
+  - clang
   - mercurial
   - automake
   - rsync
@@ -88,9 +87,6 @@ build_dependencies_for:
   - checkpolicy
   - libcurl-devel
   - libuuid-devel
-  - python2
-  - python2-devel
-  - python2-numpy
   - readline-devel
   - rpm-build
   - selinux-policy-devel
@@ -103,6 +99,7 @@ build_dependencies_for:
   - xz-devel
   Fedora:
   - cmake
+  - clang
   - mercurial
   - automake
   - rsync
@@ -119,8 +116,6 @@ build_dependencies_for:
   - geos-devel
   - libcurl-devel
   - libuuid-devel
-  - python2-devel
-  - python2-numpy
   - R-core-devel
   - readline-devel
   - rpm-build
@@ -141,18 +136,3 @@ build_dependencies_for:
   Gentoo:
   - mercurial
   - dev-libs/libatomic_ops
-
-monetdb_version_for_release:
-  Jul2017: 11.27.1
-  Jul2017-SP1: 11.27.5
-  Jul2017-SP2: 11.27.9
-  Jul2017-SP3: 11.27.11
-  Jul2017-SP4: 11.27.13
-  Mar2018: 11.29.3
-  Mar2018-SP1: 11.29.7
-  Aug2018: 11.31.7
-  Aug2018-SP1: 11.31.11
-  Aug2018-SP2: 11.31.13
-  Apr2019: 11.33.3
-  Apr2019-SP1: 11.33.11
-  Nov2019: 11.35.3
